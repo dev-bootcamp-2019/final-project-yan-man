@@ -29,7 +29,7 @@ Otherwise, interact with the DApp via the frontend included, which will allow yo
 ### II. Getting Started
 #### Required installations:
 
-Install the following packages. DApp was developed in the following versions.
+Install the following packages. DApp was developed in the following versions in a [Ubuntu64 18.04](https://www.ubuntu.com/download/desktop) environment.
 
 1. [Truffle  v5.0.2 (core: 5.0.2)](https://truffleframework.com/docs/truffle/getting-started/installation)
 2. [Ganache CLI v6.2.3 (ganache-core: 2.3.1)](https://truffleframework.com/docs/ganache/quickstart)
@@ -37,8 +37,6 @@ Install the following packages. DApp was developed in the following versions.
 4. [Node v8.10.0](https://nodejs.org/en/)
 5. [MetaMask](https://metamask.io/)
 6. [Solidity v0.5.0 (solc-js)](https://solidity.readthedocs.io/en/v0.5.3/)
-
-This environment was [Ubuntu64 18.04](https://www.ubuntu.com/download/desktop).
 
 #### To run:
 
