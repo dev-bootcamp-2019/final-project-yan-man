@@ -29,82 +29,93 @@ Otherwise, interact with the DApp via the frontend included, which will allow yo
 ### Getting Started
 #### Required installations:
 
-Install the following packages:
+Install the following packages. DApp was developed in the following versions.
 
-1. [Truffle v5.0](https://truffleframework.com/docs/truffle/getting-started/installation)
-2. [Ganache](https://truffleframework.com/docs/ganache/quickstart)
-3. [NPM](https://www.npmjs.com/get-npm)
-4. [Lite-Server](https://www.npmjs.com/package/lite-server)
+1. [Truffle  v5.0.2 (core: 5.0.2)](https://truffleframework.com/docs/truffle/getting-started/installation)
+2. [Ganache CLI v6.2.3 (ganache-core: 2.3.1)](https://truffleframework.com/docs/ganache/quickstart)
+3. [npm v3.5.2](https://www.npmjs.com/get-npm)
+4. [Node v8.10.0](https://nodejs.org/en/)
 5. [MetaMask](https://metamask.io/)
-Solidity
+6. [Solidity v0.5.0 (solc-js)](https://solidity.readthedocs.io/en/v0.5.3/)
 
-This DApp was developed in Ubuntu64 16.04 VM environment.
+This environment was [Ubuntu64 18.04](https://www.ubuntu.com/download/desktop).
 
 #### To run:
 
 VPP-Dapp is a truffle project that contains all necessary contract, library, migration and test files. Execute via command line:
 
-1. Clone the repo to your directory
+1. Clone the repo to your directory.
 
-2. In a separate terminal, start ganache development blockchain on port 7545. Create 10 funded accounts
+  ```
+  $ git clone
+  ```
 
-    ```
-    > ganache-cli -p 7545
-    ```
-
-3. In the original terminal, navigate to the project directory. Migrate and compile the Truffle contract to generate the ABI and deploy to the dev blockchain
-
-4. Test the contract functions via js tests. All tests should pass
-
-5. Make sure `MetaMask` is installed. Open `MetaMask` in your Chrome browser and import the development accounts created by `ganache`. Only one address is required to test the DApp.
-
-6. Start the front end server on ```localhost:3000```
+2. In a separate terminal, start ganache development blockchain on port 7545. Create 10 funded accounts.
 
     ```
-    > git clone
-    > truffle migrate --reset
-    > truffle test
-    > npm run dev
+    Terminal 2:
+    $ ganache-cli -p 7545
     ```
+3. In the first terminal, navigate to the project directory. Test the contract functions via `JavaScript` tests. There are 6 tests, which should pass.
+
+  ```
+  Terminal 1:
+  $ truffle test
+  ```
+3. Migrate and compile the Truffle contract to generate the ABI and deploy the contract to the dev blockchain.
+
+  ```
+  $ truffle migrate --reset
+  ```
+
+5. Make sure `MetaMask` is installed. Open `MetaMask` in your Chrome browser and set the network connection to `Custom RPC` and the target RPC url to `http://127.0.0.1:7545` to access the `ganache-cli` accounts. Only one address is required to test the DApp.
+
+6. Start the front end server on ```localhost:3000``` by using:
+
+  ```
+  $ npm run dev
+  ```
 
 #### Frontend Interaction:
 
 The first development account (`account[0]`) is used to deploy the parent contract `VirtualPowerPlant.sol`. This address will also be an `admin` and the `owner`. Only one development account is required.
 
-In `MetaMask`, set the connection to `Custom RPC` and the target RPC url to http://127.0.0.1:7545 to access the `ganache-cli` accounts.
-
 To test the DApp, follow instructions on the `index.html` homepage.
 
 1. Start by investing some amount of Eth (around ~50 Eth should be sufficient) into the battery fund by filling in the form input. Click `Invest` to proceed.
 
-2. Once the transaction has been accepted, you can start adding batteries to the fleet. Sample battery options are listed and available, select a few to add by clicking `Add to array`.
+2. Once the transaction has been accepted, you can start adding batteries to the fleet. Sample battery options are listed and available, select a few to add by clicking `Add to array` under each battery panel. Make sure you are in the
 
-3. Charge or discharge batteries by clicking `Execute Energy Transactions`. This will update battery charge currently filled and determine whether to charge (green) or discharge (red) the battery to the grid. Remaining investment will be updated to reflect the savings/cost of energy transacted.
+3. Charge or discharge batteries and execute transactions by clicking `Execute Energy Transactions`. This will update battery charge currently filled and determine whether to charge (green) or discharge (red) the battery to the grid. Remaining investment will be updated to reflect the savings/cost of energy transacted.
+
+
 
 ### Detailed Usage
 
 #### Contract Functions / Business Logic:
-##### VirtualPowerPlant.sol
-- `isAdmin`: check address is an admin
+##### 1) VirtualPowerPlant.sol
+- `isAdmin`: check address is an admin user
 - `setAdmin`: set admin to active or inactive
 - `toggleContractActive`: to implement circuit breaker design
-- `addBattery`: add battery to fleet based on battery characteristics/serial number
-- `chargeBattery`: charge battery, ie alter battery state based on amount charged
-- `changeBatteryThreshold`: alter battery characteristics
-- `decommissionBattery`: render batteries inactive
-###### Battery getter functions:
+
+- `addBattery`: add Battery struct to fleet, composed of multiple battery characteristics
+- `decommissionBattery`: render battery inactive (no charging/discharging)
+- `chargeBattery`: charge battery, ie alter battery state based on amount charged/discharged
+- `changeBatteryThreshold`: alter battery threshold characteristics (affects decision making on energy purchases)
+
+** Battery info getter functions:**
 - `getRelevantBatteryInfo`
 - `getBatteryChargeRate`
 - `getBatteryMapIndex`
 
-##### BatteryInvestment.sol
+##### 2) BatteryInvestment.sol
 - `updateRemainingInvestment`: update amount of remaining eth in fund
 - `investMoney`: ensure Eth is attached when calling this function
 - `triggerDividend`: admins can implement a dividend to send payment to investors
 - `withdraw`: for investors to retrieve their dividend withdrawal
 - `getInvestorInvestment`: getter function to retrieve investment amount for particular investor
 
-##### BatteryEnergy.sol
+##### 3) BatteryEnergy.sol
 - `checkBatteryEnergy`: loop over batches of batteries, check transaction circumstances for each. Transact energy as required, update the investment fund with profits/energy purchases.
 
 #### Tests:

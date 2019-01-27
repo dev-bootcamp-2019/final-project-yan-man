@@ -56,6 +56,8 @@ App = {
         return App.showInvestmentAmount();
     }).then(function(){
         return App.labelBatteriesAdded();
+    }).then(function(){
+        return App.labelOwner();
     });
     $("#contractDeployed").text("Contract Deployed Successfully!");
     // bind button events
@@ -180,6 +182,14 @@ App = {
             }
           });
       }
+    },
+    labelOwner: async () => {
+
+      let VirtualPowerPlantInstance = await App.contracts.VirtualPowerPlant.deployed();
+
+      let owner = await VirtualPowerPlantInstance.owner();
+      $("#owner").text(owner);
+
     },
     showBatteryFill: async () => {
 
