@@ -46,9 +46,9 @@ VPP-Dapp is a truffle project that contains all necessary contract, library, mig
 
 1. Clone the repo to your directory.
 
-  ```
-  $ git clone
-  ```
+    ```
+    $ git clone
+    ```
 
 2. In a separate terminal, start ganache development blockchain on port 7545. Create 10 funded accounts.
 
@@ -58,23 +58,23 @@ VPP-Dapp is a truffle project that contains all necessary contract, library, mig
     ```
 3. In the first terminal, navigate to the project directory. Test the contract functions via `JavaScript` tests. There are 6 tests, which should pass.
 
-  ```
-  Terminal 1:
-  $ truffle test
-  ```
+    ```
+    Terminal 1:
+    $ truffle test
+    ```
 3. Migrate and compile the Truffle contract to generate the ABI and deploy the contract to the dev blockchain.
 
-  ```
-  $ truffle migrate --reset
-  ```
+    ```
+    $ truffle migrate --reset
+    ```
 
 5. Make sure `MetaMask` is installed. Open `MetaMask` in your Chrome browser and set the network connection to `Custom RPC` and the target RPC url to `http://127.0.0.1:7545` to access the `ganache-cli` accounts. Only one address is required to test the DApp.
 
 6. Start the front end server on ```localhost:3000``` by using:
 
-  ```
-  $ npm run dev
-  ```
+    ```
+    $ npm run dev
+    ```
 
 #### Frontend Interaction:
 
