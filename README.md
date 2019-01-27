@@ -122,7 +122,7 @@ Investors are composed of any other accounts that want to contribute eth to the 
 - `chargeBattery`: charge battery, ie alter battery state based on amount charged/discharged
 - `changeBatteryThreshold`: alter battery threshold characteristics (affects decision making on energy purchases)
 
-** Battery info getter functions:**
+**Battery info getter functions:**
 - `getRelevantBatteryInfo`
 - `getBatteryChargeRate`
 - `getBatteryMapIndex`
