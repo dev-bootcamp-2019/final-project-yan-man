@@ -16890,14 +16890,118 @@
       "transactionHash": "0x7b75c02348869b377f7747bd03964eda225264d0d1fb12424bf3b8e0b4703b87"
     },
     "1548646207210": {
-      "events": {},
+      "events": {
+        "0x012335398b2ec0286f8c0396759e9608b4e163f51d06d11116dd801b2b47c60f": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "investorAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "investmentAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogNewInvestment",
+          "type": "event",
+          "signature": "0x012335398b2ec0286f8c0396759e9608b4e163f51d06d11116dd801b2b47c60f"
+        },
+        "0xa502fd41811afb69adfdfadf22b00a476d683cb0e8fcb04ecef9e331e2a26a6d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "investorAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "withdrawalAmount",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogWithdrawalMade",
+          "type": "event",
+          "signature": "0xa502fd41811afb69adfdfadf22b00a476d683cb0e8fcb04ecef9e331e2a26a6d"
+        },
+        "0x845cf4219f3b3b9a965f9be9881c40cdd5a1d3d4cc0732a19c72d42e9464f51e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "adminAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "status",
+              "type": "bool"
+            }
+          ],
+          "name": "LogChangeAdmin",
+          "type": "event",
+          "signature": "0x845cf4219f3b3b9a965f9be9881c40cdd5a1d3d4cc0732a19c72d42e9464f51e"
+        },
+        "0x30d85d5a522569ce310aa6c7c0440c91d487f54517033dbdf0842b674f82de07": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "serialNumber",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "name": "newStatus",
+              "type": "bool"
+            }
+          ],
+          "name": "LogBatteryActive",
+          "type": "event",
+          "signature": "0x30d85d5a522569ce310aa6c7c0440c91d487f54517033dbdf0842b674f82de07"
+        },
+        "0xa6551cf039439f591ebe17eb5c0e3a1605a7be4c97483192e842e778851f0114": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "newThreshold",
+              "type": "uint256"
+            }
+          ],
+          "name": "LogBatteryThresholdChanged",
+          "type": "event",
+          "signature": "0xa6551cf039439f591ebe17eb5c0e3a1605a7be4c97483192e842e778851f0114"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event",
+          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+        }
+      },
       "links": {},
-      "address": "0x6F7D0D4Fe360b434314633BD9dd69b700eEd8ff5",
-      "transactionHash": "0xd62982e5eb314e8ef7700ffb6acb1b2a6550d48b7b3f3eaa3824e2020990e906"
+      "address": "0x5c2936D569834F8a21BFb104085508302FaF8F9c",
+      "transactionHash": "0xa88ac603edba87e8d546515549687b8ff5231d4deb0328253a23b65dfcb40251"
     }
   },
   "schemaVersion": "3.0.0",
-  "updatedAt": "2019-01-28T03:33:47.820Z",
+  "updatedAt": "2019-01-28T03:38:30.567Z",
   "devdoc": {
     "author": "Yan Man",
     "methods": {
